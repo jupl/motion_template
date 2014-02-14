@@ -1,0 +1,9 @@
+source 'https://rubygems.org'
+
+gem 'rake'
+
+# Add your dependencies here:
+gem 'motion-cocoapods', '~> 1.4.0'
+gem 'motion-layout', '~> 0.0.2'
+gem 'motion-pixate', '~> 2.0.0'
+gem 'ProMotion', '~> 1.1.2'

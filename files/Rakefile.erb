@@ -1,0 +1,24 @@
+# -*- coding: utf-8 -*-
+$:.unshift('/Library/RubyMotion/lib')
+require 'motion/project/template/ios'
+
+begin
+  require 'bundler'
+  Bundler.require
+rescue LoadError
+end
+
+Motion::Project::App.setup do |app|
+  app.name = '<%= name %>'
+
+  app.pods do
+    pod 'Pixate'
+  end
+
+  app.pixate.user = ENV['PIXATE_USER']
+  app.pixate.key = ENV['PIXATE_KEY']
+  app.pixate.framework = 'vendor/Pods/Pixate/Framework/iOS/Pixate.framework/'
+end
+
+Rake::Task['build:device'].enhance ['pod:install', 'pixate:sass']
+Rake::Task['build:simulator'].enhance ['pod:install', 'pixate:sass']
